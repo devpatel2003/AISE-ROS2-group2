@@ -1,0 +1,44 @@
+[5.400s] Invoking command in '/home/devpatel/crowd_nav_ws/build/yahboomcar_description': PYTHONPATH=/home/devpatel/crowd_nav_ws/build/yahboomcar_description/prefix_override:/home/devpatel/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/devpatel/crowd_nav_ws/install/yahboomcar_description/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/devpatel/crowd_nav_ws/build/yahboomcar_description/build --no-deps symlink_data
+[6.526s] running develop
+[7.179s] running egg_info
+[7.180s] creating yahboomcar_description.egg-info
+[7.185s] writing yahboomcar_description.egg-info/PKG-INFO
+[7.185s] writing dependency_links to yahboomcar_description.egg-info/dependency_links.txt
+[7.190s] writing entry points to yahboomcar_description.egg-info/entry_points.txt
+[7.190s] writing requirements to yahboomcar_description.egg-info/requires.txt
+[7.191s] writing top-level names to yahboomcar_description.egg-info/top_level.txt
+[7.191s] writing manifest file 'yahboomcar_description.egg-info/SOURCES.txt'
+[7.198s] reading manifest file 'yahboomcar_description.egg-info/SOURCES.txt'
+[7.198s] writing manifest file 'yahboomcar_description.egg-info/SOURCES.txt'
+[7.204s] running build_ext
+[7.204s] Creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/lib/python3.10/site-packages/yahboomcar-description.egg-link (link to .)
+[7.207s] 
+[7.208s] Installed /home/devpatel/crowd_nav_ws/build/yahboomcar_description
+[7.208s] running symlink_data
+[7.208s] creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/ament_index
+[7.209s] creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/ament_index/resource_index
+[7.209s] creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/ament_index/resource_index/packages
+[7.209s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/resource/yahboomcar_description -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/ament_index/resource_index/packages
+[7.210s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/package.xml -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description
+[7.210s] creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+[7.210s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/launch/display.launch.py -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+[7.214s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/launch/description_multi_robot2.launch.py -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+[7.215s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/launch/description_launch.py -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+[7.215s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/launch/description_multi_robot1.launch.py -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+[7.215s] creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+[7.215s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/urdf/MicroROS_robot2.urdf -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+[7.215s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/urdf/MicroROS.urdf -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+[7.216s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/urdf/MicroROS_robot1.urdf -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+[7.216s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/urdf/yahboomcar_robot2.urdf -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+[7.216s] creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.216s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/jq1_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.217s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/base_link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.217s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/radar_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.217s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/radar_Link3x.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.217s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/jq2_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.217s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/yh_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.218s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/zq_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.218s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/zh_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.218s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/imu_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.218s] symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/yq_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+[7.406s] Invoked command in '/home/devpatel/crowd_nav_ws/build/yahboomcar_description' returned '0': PYTHONPATH=/home/devpatel/crowd_nav_ws/build/yahboomcar_description/prefix_override:/home/devpatel/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/devpatel/crowd_nav_ws/install/yahboomcar_description/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/devpatel/crowd_nav_ws/build/yahboomcar_description/build --no-deps symlink_data

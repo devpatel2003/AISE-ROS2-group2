@@ -1,0 +1,24 @@
+[2.657s] Invoking command in '/home/devpatel/crowd_nav_ws/build/pybullet_sim': PYTHONPATH=/home/devpatel/crowd_nav_ws/build/pybullet_sim/prefix_override:/home/devpatel/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/devpatel/crowd_nav_ws/build/pybullet_sim/build --no-deps symlink_data
+[3.584s] running develop
+[4.181s] running egg_info
+[4.185s] creating pybullet_sim.egg-info
+[4.191s] writing pybullet_sim.egg-info/PKG-INFO
+[4.192s] writing dependency_links to pybullet_sim.egg-info/dependency_links.txt
+[4.192s] writing entry points to pybullet_sim.egg-info/entry_points.txt
+[4.192s] writing requirements to pybullet_sim.egg-info/requires.txt
+[4.192s] writing top-level names to pybullet_sim.egg-info/top_level.txt
+[4.192s] writing manifest file 'pybullet_sim.egg-info/SOURCES.txt'
+[4.193s] reading manifest file 'pybullet_sim.egg-info/SOURCES.txt'
+[4.196s] writing manifest file 'pybullet_sim.egg-info/SOURCES.txt'
+[4.200s] running build_ext
+[4.201s] Creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/python3.10/site-packages/pybullet-sim.egg-link (link to .)
+[4.204s] Installing pybullet_lidar_sim script to /home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/pybullet_sim
+[4.204s] 
+[4.205s] Installed /home/devpatel/crowd_nav_ws/build/pybullet_sim
+[4.205s] running symlink_data
+[4.205s] creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index
+[4.206s] creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index/resource_index
+[4.206s] creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index/resource_index/packages
+[4.206s] symbolically linking /home/devpatel/crowd_nav_ws/build/pybullet_sim/resource/pybullet_sim -> /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index/resource_index/packages
+[4.206s] symbolically linking /home/devpatel/crowd_nav_ws/build/pybullet_sim/package.xml -> /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/pybullet_sim
+[4.309s] Invoked command in '/home/devpatel/crowd_nav_ws/build/pybullet_sim' returned '0': PYTHONPATH=/home/devpatel/crowd_nav_ws/build/pybullet_sim/prefix_override:/home/devpatel/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/devpatel/crowd_nav_ws/build/pybullet_sim/build --no-deps symlink_data

@@ -1,0 +1,17 @@
+[4.196s] Invoking command in '/home/devpatel/crowd_nav_ws/build/pybullet_sim': PYTHONPATH=/home/devpatel/crowd_nav_ws/build/pybullet_sim/prefix_override:/home/devpatel/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/devpatel/crowd_nav_ws/build/pybullet_sim/build --no-deps symlink_data
+[5.245s] running develop
+[5.938s] running egg_info
+[5.945s] writing pybullet_sim.egg-info/PKG-INFO
+[5.951s] writing dependency_links to pybullet_sim.egg-info/dependency_links.txt
+[5.953s] writing entry points to pybullet_sim.egg-info/entry_points.txt
+[5.955s] writing requirements to pybullet_sim.egg-info/requires.txt
+[5.957s] writing top-level names to pybullet_sim.egg-info/top_level.txt
+[5.964s] reading manifest file 'pybullet_sim.egg-info/SOURCES.txt'
+[5.967s] writing manifest file 'pybullet_sim.egg-info/SOURCES.txt'
+[5.973s] running build_ext
+[5.974s] Creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/python3.10/site-packages/pybullet-sim.egg-link (link to .)
+[5.977s] Installing crowd_gym script to /home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/pybullet_sim
+[5.978s] 
+[5.979s] Installed /home/devpatel/crowd_nav_ws/build/pybullet_sim
+[5.979s] running symlink_data
+[6.124s] Invoked command in '/home/devpatel/crowd_nav_ws/build/pybullet_sim' returned '0': PYTHONPATH=/home/devpatel/crowd_nav_ws/build/pybullet_sim/prefix_override:/home/devpatel/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/devpatel/crowd_nav_ws/build/pybullet_sim/build --no-deps symlink_data

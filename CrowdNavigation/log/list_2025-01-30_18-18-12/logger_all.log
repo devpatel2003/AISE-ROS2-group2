@@ -1,0 +1,66 @@
+[0.718s] DEBUG:colcon:Command line arguments: ['/home/devpatel/.local/bin/colcon', 'list', '-p', '--base-paths', '/home/devpatel/crowd_nav_ws']
+[0.719s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='list', build_base='build', ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['/home/devpatel/crowd_nav_ws'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], topological_order=False, names_only=False, paths_only=True, topological_graph=False, topological_graph_dot=False, topological_graph_density=False, topological_graph_legend=False, topological_graph_dot_cluster=False, topological_graph_dot_include_skipped=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0xffff82d2ac80>, verb_extension=<colcon_package_information.verb.list.ListVerb object at 0xffff82d29f30>, main=<bound method ListVerb.main of <colcon_package_information.verb.list.ListVerb object at 0xffff82d29f30>>)
+[2.037s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[2.038s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[2.039s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[2.039s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[2.039s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[2.039s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/devpatel/crowd_nav_ws'
+[2.040s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extensions ['ignore', 'ignore_ament_install']
+[2.040s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extension 'ignore'
+[2.040s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extension 'ignore_ament_install'
+[2.040s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extensions ['colcon_pkg']
+[2.041s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extension 'colcon_pkg'
+[2.041s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extensions ['colcon_meta']
+[2.041s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extension 'colcon_meta'
+[2.042s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extensions ['ros']
+[2.042s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extension 'ros'
+[2.085s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extensions ['cmake', 'python']
+[2.085s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extension 'cmake'
+[2.085s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extension 'python'
+[2.085s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extensions ['python_setup_py']
+[2.085s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws) by extension 'python_setup_py'
+[2.086s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/build) by extensions ['ignore', 'ignore_ament_install']
+[2.086s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/build) by extension 'ignore'
+[2.087s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/build) ignored
+[2.087s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/install) by extensions ['ignore', 'ignore_ament_install']
+[2.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/install) by extension 'ignore'
+[2.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/install) ignored
+[2.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/log) by extensions ['ignore', 'ignore_ament_install']
+[2.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/log) by extension 'ignore'
+[2.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/log) ignored
+[2.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extensions ['ignore', 'ignore_ament_install']
+[2.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extension 'ignore'
+[2.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extension 'ignore_ament_install'
+[2.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extensions ['colcon_pkg']
+[2.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extension 'colcon_pkg'
+[2.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extensions ['colcon_meta']
+[2.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extension 'colcon_meta'
+[2.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extensions ['ros']
+[2.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extension 'ros'
+[2.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extensions ['cmake', 'python']
+[2.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extension 'cmake'
+[2.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extension 'python'
+[2.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extensions ['python_setup_py']
+[2.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src) by extension 'python_setup_py'
+[2.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/pybullet_sim) by extensions ['ignore', 'ignore_ament_install']
+[2.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/pybullet_sim) by extension 'ignore'
+[2.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/pybullet_sim) by extension 'ignore_ament_install'
+[2.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/pybullet_sim) by extensions ['colcon_pkg']
+[2.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/pybullet_sim) by extension 'colcon_pkg'
+[2.128s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/pybullet_sim) by extensions ['colcon_meta']
+[2.128s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/pybullet_sim) by extension 'colcon_meta'
+[2.128s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/pybullet_sim) by extensions ['ros']
+[2.128s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/pybullet_sim) by extension 'ros'
+[2.137s] DEBUG:colcon.colcon_core.package_identification:Package '/home/devpatel/crowd_nav_ws/src/pybullet_sim' with type 'ros.ament_python' and name 'pybullet_sim'
+[2.138s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/yahboomcar_description) by extensions ['ignore', 'ignore_ament_install']
+[2.138s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/yahboomcar_description) by extension 'ignore'
+[2.139s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/yahboomcar_description) by extension 'ignore_ament_install'
+[2.139s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/yahboomcar_description) by extensions ['colcon_pkg']
+[2.139s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/yahboomcar_description) by extension 'colcon_pkg'
+[2.139s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/yahboomcar_description) by extensions ['colcon_meta']
+[2.139s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/yahboomcar_description) by extension 'colcon_meta'
+[2.139s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/yahboomcar_description) by extensions ['ros']
+[2.140s] Level 1:colcon.colcon_core.package_identification:_identify(/home/devpatel/crowd_nav_ws/src/yahboomcar_description) by extension 'ros'
+[2.142s] DEBUG:colcon.colcon_core.package_identification:Package '/home/devpatel/crowd_nav_ws/src/yahboomcar_description' with type 'ros.ament_python' and name 'yahboomcar_description'
+[2.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults

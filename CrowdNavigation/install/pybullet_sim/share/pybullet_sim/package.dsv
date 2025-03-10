@@ -1,0 +1,9 @@
+source;share/pybullet_sim/hook/pythonpath.ps1
+source;share/pybullet_sim/hook/pythonpath.dsv
+source;share/pybullet_sim/hook/pythonpath.sh
+source;share/pybullet_sim/hook/ament_prefix_path.ps1
+source;share/pybullet_sim/hook/ament_prefix_path.dsv
+source;share/pybullet_sim/hook/ament_prefix_path.sh
+source;../../build/pybullet_sim/share/pybullet_sim/hook/pythonpath_develop.ps1
+source;../../build/pybullet_sim/share/pybullet_sim/hook/pythonpath_develop.dsv
+source;../../build/pybullet_sim/share/pybullet_sim/hook/pythonpath_develop.sh

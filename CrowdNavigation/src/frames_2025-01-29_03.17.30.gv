@@ -1,0 +1,7 @@
+digraph G {
+"map" -> "base_link"[label=" Broadcaster: default_authority\nAverage rate: 10.47\nBuffer length: 4.967\nMost recent transform: 1738138650.091586\nOldest transform: 1738138645.125046\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1738138650.2028217"[ shape=plaintext ] ;
+}->"map";
+}

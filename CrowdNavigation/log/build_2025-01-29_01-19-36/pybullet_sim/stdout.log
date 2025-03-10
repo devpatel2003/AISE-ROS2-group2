@@ -1,0 +1,22 @@
+running develop
+running egg_info
+creating pybullet_sim.egg-info
+writing pybullet_sim.egg-info/PKG-INFO
+writing dependency_links to pybullet_sim.egg-info/dependency_links.txt
+writing entry points to pybullet_sim.egg-info/entry_points.txt
+writing requirements to pybullet_sim.egg-info/requires.txt
+writing top-level names to pybullet_sim.egg-info/top_level.txt
+writing manifest file 'pybullet_sim.egg-info/SOURCES.txt'
+reading manifest file 'pybullet_sim.egg-info/SOURCES.txt'
+writing manifest file 'pybullet_sim.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/python3.10/site-packages/pybullet-sim.egg-link (link to .)
+Installing pybullet_lidar_sim script to /home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/pybullet_sim
+
+Installed /home/devpatel/crowd_nav_ws/build/pybullet_sim
+running symlink_data
+creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index
+creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index/resource_index
+creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index/resource_index/packages
+symbolically linking /home/devpatel/crowd_nav_ws/build/pybullet_sim/resource/pybullet_sim -> /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index/resource_index/packages
+symbolically linking /home/devpatel/crowd_nav_ws/build/pybullet_sim/package.xml -> /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/pybullet_sim

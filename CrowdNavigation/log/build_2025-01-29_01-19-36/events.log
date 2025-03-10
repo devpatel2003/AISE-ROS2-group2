@@ -1,0 +1,72 @@
+[0.000000] (-) TimerEvent: {}
+[0.002487] (pybullet_sim) JobQueued: {'identifier': 'pybullet_sim', 'dependencies': OrderedDict()}
+[0.002967] (pybullet_sim) JobStarted: {'identifier': 'pybullet_sim'}
+[0.099219] (-) TimerEvent: {}
+[0.199966] (-) TimerEvent: {}
+[0.300675] (-) TimerEvent: {}
+[0.401418] (-) TimerEvent: {}
+[0.502125] (-) TimerEvent: {}
+[0.602870] (-) TimerEvent: {}
+[0.703947] (-) TimerEvent: {}
+[0.805291] (-) TimerEvent: {}
+[0.907295] (-) TimerEvent: {}
+[1.008010] (-) TimerEvent: {}
+[1.109604] (-) TimerEvent: {}
+[1.210306] (-) TimerEvent: {}
+[1.310998] (-) TimerEvent: {}
+[1.411699] (-) TimerEvent: {}
+[1.512423] (-) TimerEvent: {}
+[1.613155] (-) TimerEvent: {}
+[1.713950] (-) TimerEvent: {}
+[1.814840] (-) TimerEvent: {}
+[1.915580] (-) TimerEvent: {}
+[2.016348] (-) TimerEvent: {}
+[2.117187] (-) TimerEvent: {}
+[2.218471] (-) TimerEvent: {}
+[2.319214] (-) TimerEvent: {}
+[2.419951] (-) TimerEvent: {}
+[2.520667] (-) TimerEvent: {}
+[2.622061] (-) TimerEvent: {}
+[2.658209] (pybullet_sim) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/devpatel/crowd_nav_ws/build/pybullet_sim/build', '--no-deps', 'symlink_data'], 'cwd': '/home/devpatel/crowd_nav_ws/build/pybullet_sim', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'devpatel', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/devpatel/imu_ws/install/rviz_imu_plugin/lib:/home/devpatel/imu_ws/install/imu_filter_madgwick/lib:/home/devpatel/imu_ws/install/imu_complementary_filter/lib:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_msgs/lib:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboom_web_savmap_interfaces/lib:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/robot_localization/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-12.6/lib64:', 'HOME': '/home/devpatel', 'OLDPWD': '/home/devpatel/crowd_nav_ws/src/pybullet_sim', 'DESKTOP_SESSION': 'ubuntu', 'JETSON_L4T': '36.4.0', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'JETSON_MODEL': 'NVIDIA Jetson Orin Nano Developer Kit', 'SYSTEMD_EXEC_PID': '2310', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/devpatel/crowd_nav_ws/install:/home/devpatel/imu_ws/install:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install:/home/devpatel/turtle_ws/install:/home/devpatel/ros2_ws/install', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'ibus', 'LOGNAME': 'devpatel', 'JETSON_MODULE': 'NVIDIA Jetson Orin Nano (Developer kit)', 'JETSON_SERIAL_NUMBER': '1422924334545', '_': '/home/devpatel/.local/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'devpatel', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/opt/ros/humble/bin:home/devpatel/.local/bin:/usr/local/cuda-12.6/bin:/home/devpatel/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/ubuntu:@/tmp/.ICE-unix/2282,unix/ubuntu:/tmp/.ICE-unix/2282', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/1321fb53_f0f3_49f9_a907_52048f1f619a', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'JETSON_SOC': 'tegra234', 'GNOME_TERMINAL_SERVICE': ':1.100', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/devpatel/imu_ws/install/imu_tools:/home/devpatel/imu_ws/install/rviz_imu_plugin:/home/devpatel/imu_ws/install/imu_filter_madgwick:/home/devpatel/imu_ws/install/imu_complementary_filter:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_visual:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_nav:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_multi:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_msgs:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_mediapipe:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_laser:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_description:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_ctrl:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_bringup:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_base_node:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_astra:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboom_web_savmap_interfaces:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboom_app_save_map:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/robot_pose_publisher_ros2:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/robot_localization:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/laserscan_to_point_publisher:/home/devpatel/turtle_ws/install/turtlebot3_example:/home/devpatel/turtle_ws/install/turtlebot3_description:/home/devpatel/turtle_ws/install/turtlebot3_cartographer:/home/devpatel/ros2_ws/install/sim_test:/home/devpatel/ros2_ws/install/my_robot_controller:/opt/ros/humble', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'QT_IM_MODULE': 'ibus', 'JETSON_CUDA_ARCH_BIN': '8.7', 'PWD': '/home/devpatel/crowd_nav_ws/build/pybullet_sim', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/devpatel/crowd_nav_ws/build/pybullet_sim/prefix_override:/home/devpatel/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_visual/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_nav/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_multi/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_msgs/local/lib/python3.10/dist-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_mediapipe/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_laser/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_description/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_ctrl/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_bringup/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_astra/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboom_web_savmap_interfaces/local/lib/python3.10/dist-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboom_app_save_map/lib/python3.10/site-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/robot_localization/local/lib/python3.10/dist-packages:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/laserscan_to_point_publisher/lib/python3.10/site-packages:/home/devpatel/turtle_ws/install/turtlebot3_example/lib/python3.10/site-packages:/home/devpatel/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'JETSON_JETPACK': '6.1', 'CMAKE_PREFIX_PATH': '/home/devpatel/imu_ws/install/imu_tools:/home/devpatel/imu_ws/install/rviz_imu_plugin:/home/devpatel/imu_ws/install/imu_filter_madgwick:/home/devpatel/imu_ws/install/imu_complementary_filter:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_msgs:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_base_node:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboom_web_savmap_interfaces:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/robot_pose_publisher_ros2:/home/devpatel/yahboomcar_ros2_ws/yahboomcar_ws/install/robot_localization:/home/devpatel/turtle_ws/install/turtlebot3_description:/home/devpatel/turtle_ws/install/turtlebot3_cartographer:/home/devpatel/ros2_ws/install/sim_test', 'JETSON_P_NUMBER': 'p3767-0005'}, 'shell': False}
+[2.722240] (-) TimerEvent: {}
+[2.822954] (-) TimerEvent: {}
+[2.923659] (-) TimerEvent: {}
+[3.024921] (-) TimerEvent: {}
+[3.126098] (-) TimerEvent: {}
+[3.226840] (-) TimerEvent: {}
+[3.327577] (-) TimerEvent: {}
+[3.428328] (-) TimerEvent: {}
+[3.529039] (-) TimerEvent: {}
+[3.586242] (pybullet_sim) StdoutLine: {'line': b'running develop\n'}
+[3.629205] (-) TimerEvent: {}
+[3.729989] (-) TimerEvent: {}
+[3.830736] (-) TimerEvent: {}
+[3.931479] (-) TimerEvent: {}
+[4.032211] (-) TimerEvent: {}
+[4.132947] (-) TimerEvent: {}
+[4.183935] (pybullet_sim) StdoutLine: {'line': b'running egg_info\n'}
+[4.187875] (pybullet_sim) StdoutLine: {'line': b'creating pybullet_sim.egg-info\n'}
+[4.193597] (pybullet_sim) StdoutLine: {'line': b'writing pybullet_sim.egg-info/PKG-INFO\n'}
+[4.194276] (pybullet_sim) StdoutLine: {'line': b'writing dependency_links to pybullet_sim.egg-info/dependency_links.txt\n'}
+[4.194728] (pybullet_sim) StdoutLine: {'line': b'writing entry points to pybullet_sim.egg-info/entry_points.txt\n'}
+[4.194971] (pybullet_sim) StdoutLine: {'line': b'writing requirements to pybullet_sim.egg-info/requires.txt\n'}
+[4.195188] (pybullet_sim) StdoutLine: {'line': b'writing top-level names to pybullet_sim.egg-info/top_level.txt\n'}
+[4.195395] (pybullet_sim) StdoutLine: {'line': b"writing manifest file 'pybullet_sim.egg-info/SOURCES.txt'\n"}
+[4.195592] (pybullet_sim) StdoutLine: {'line': b"reading manifest file 'pybullet_sim.egg-info/SOURCES.txt'\n"}
+[4.198683] (pybullet_sim) StdoutLine: {'line': b"writing manifest file 'pybullet_sim.egg-info/SOURCES.txt'\n"}
+[4.202840] (pybullet_sim) StdoutLine: {'line': b'running build_ext\n'}
+[4.203414] (pybullet_sim) StdoutLine: {'line': b'Creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/python3.10/site-packages/pybullet-sim.egg-link (link to .)\n'}
+[4.206574] (pybullet_sim) StdoutLine: {'line': b'Installing pybullet_lidar_sim script to /home/devpatel/crowd_nav_ws/install/pybullet_sim/lib/pybullet_sim\n'}
+[4.207084] (pybullet_sim) StdoutLine: {'line': b'\n'}
+[4.207452] (pybullet_sim) StdoutLine: {'line': b'Installed /home/devpatel/crowd_nav_ws/build/pybullet_sim\n'}
+[4.207923] (pybullet_sim) StdoutLine: {'line': b'running symlink_data\n'}
+[4.208228] (pybullet_sim) StdoutLine: {'line': b'creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index\n'}
+[4.208460] (pybullet_sim) StdoutLine: {'line': b'creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index/resource_index\n'}
+[4.208673] (pybullet_sim) StdoutLine: {'line': b'creating /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index/resource_index/packages\n'}
+[4.208961] (pybullet_sim) StdoutLine: {'line': b'symbolically linking /home/devpatel/crowd_nav_ws/build/pybullet_sim/resource/pybullet_sim -> /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/ament_index/resource_index/packages\n'}
+[4.209171] (pybullet_sim) StdoutLine: {'line': b'symbolically linking /home/devpatel/crowd_nav_ws/build/pybullet_sim/package.xml -> /home/devpatel/crowd_nav_ws/install/pybullet_sim/share/pybullet_sim\n'}
+[4.233109] (-) TimerEvent: {}
+[4.310762] (pybullet_sim) CommandEnded: {'returncode': 0}
+[4.333293] (-) TimerEvent: {}
+[4.366191] (pybullet_sim) JobEnded: {'identifier': 'pybullet_sim', 'rc': 0}
+[4.370494] (-) EventReactorShutdown: {}

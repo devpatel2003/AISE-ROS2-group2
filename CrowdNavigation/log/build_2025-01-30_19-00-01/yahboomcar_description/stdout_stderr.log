@@ -1,0 +1,42 @@
+running develop
+running egg_info
+creating yahboomcar_description.egg-info
+writing yahboomcar_description.egg-info/PKG-INFO
+writing dependency_links to yahboomcar_description.egg-info/dependency_links.txt
+writing entry points to yahboomcar_description.egg-info/entry_points.txt
+writing requirements to yahboomcar_description.egg-info/requires.txt
+writing top-level names to yahboomcar_description.egg-info/top_level.txt
+writing manifest file 'yahboomcar_description.egg-info/SOURCES.txt'
+reading manifest file 'yahboomcar_description.egg-info/SOURCES.txt'
+writing manifest file 'yahboomcar_description.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/lib/python3.10/site-packages/yahboomcar-description.egg-link (link to .)
+
+Installed /home/devpatel/crowd_nav_ws/build/yahboomcar_description
+running symlink_data
+creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/ament_index
+creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/ament_index/resource_index
+creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/ament_index/resource_index/packages
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/resource/yahboomcar_description -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/ament_index/resource_index/packages
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/package.xml -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description
+creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/launch/display.launch.py -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/launch/description_multi_robot2.launch.py -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/launch/description_launch.py -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/launch/description_multi_robot1.launch.py -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/launch
+creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/urdf/MicroROS_robot2.urdf -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/urdf/MicroROS.urdf -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/urdf/MicroROS_robot1.urdf -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/urdf/yahboomcar_robot2.urdf -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/urdf
+creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/jq1_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/base_link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/radar_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/radar_Link3x.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/jq2_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/yh_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/zq_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/zh_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/imu_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes
+symbolically linking /home/devpatel/crowd_nav_ws/build/yahboomcar_description/meshes/yq_Link.STL -> /home/devpatel/crowd_nav_ws/install/yahboomcar_description/share/yahboomcar_description/meshes

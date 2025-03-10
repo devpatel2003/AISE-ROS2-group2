@@ -1,0 +1,16 @@
+[3.725s] Invoking command in '/home/devpatel/crowd_nav_ws/build/yahboomcar_description': PYTHONPATH=/home/devpatel/crowd_nav_ws/build/yahboomcar_description/prefix_override:/home/devpatel/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/devpatel/crowd_nav_ws/install/yahboomcar_description/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/devpatel/crowd_nav_ws/build/yahboomcar_description/build --no-deps symlink_data
+[4.832s] running develop
+[5.798s] running egg_info
+[5.801s] writing yahboomcar_description.egg-info/PKG-INFO
+[5.804s] writing dependency_links to yahboomcar_description.egg-info/dependency_links.txt
+[5.807s] writing entry points to yahboomcar_description.egg-info/entry_points.txt
+[5.809s] writing requirements to yahboomcar_description.egg-info/requires.txt
+[5.810s] writing top-level names to yahboomcar_description.egg-info/top_level.txt
+[5.819s] reading manifest file 'yahboomcar_description.egg-info/SOURCES.txt'
+[5.823s] writing manifest file 'yahboomcar_description.egg-info/SOURCES.txt'
+[5.830s] running build_ext
+[5.831s] Creating /home/devpatel/crowd_nav_ws/install/yahboomcar_description/lib/python3.10/site-packages/yahboomcar-description.egg-link (link to .)
+[5.836s] 
+[5.836s] Installed /home/devpatel/crowd_nav_ws/build/yahboomcar_description
+[5.837s] running symlink_data
+[6.028s] Invoked command in '/home/devpatel/crowd_nav_ws/build/yahboomcar_description' returned '0': PYTHONPATH=/home/devpatel/crowd_nav_ws/build/yahboomcar_description/prefix_override:/home/devpatel/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/devpatel/crowd_nav_ws/install/yahboomcar_description/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/devpatel/crowd_nav_ws/build/yahboomcar_description/build --no-deps symlink_data
