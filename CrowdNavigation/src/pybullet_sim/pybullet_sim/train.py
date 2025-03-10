@@ -19,7 +19,15 @@ class CustomCNNLSTM(BaseFeaturesExtractor):
     def __init__(self, observation_space, num_filters=64, lstm_hidden_size=256, train_cnn=False, train_lstm=False):
         super(CustomCNNLSTM, self).__init__(observation_space, features_dim=512)
 
-        # ✅ 2-layer CNN with BatchNorm
+        # 1st: Define MLP for goal-seeking
+        self.mlp_fc = nn.Sequential(
+                nn.Linear(7, 512),  
+                nn.ReLU(),
+                nn.Linear(512, 512),
+                nn.ReLU()
+        )
+
+        # 2nd: CNN with BatchNorm for static obsticals 
         self.cnn = nn.Sequential(
             nn.Conv1d(1, num_filters, kernel_size=5, stride=1, padding=2),
             nn.BatchNorm1d(num_filters),
@@ -31,34 +39,36 @@ class CustomCNNLSTM(BaseFeaturesExtractor):
             nn.Flatten()
         )
 
-        # ✅ LSTM for dynamic obstacle tracking
+        # 3rd: LSTM for dynamic obstacle tracking
         self.lstm = nn.LSTM(input_size=num_filters * 2, hidden_size=lstm_hidden_size, batch_first=True)
 
-        # ✅ "Freeze" CNN if `train_cnn=False`
+        # "Freeze" CNN if `train_cnn=False`
         if not train_cnn:
             for param in self.cnn.parameters():
-                param.requires_grad = False  # ✅ Prevents CNN updates
+                param.requires_grad = False  # Prevents CNN updates
 
-        # ✅ "Freeze" LSTM if `train_lstm=False`
+        # "Freeze" LSTM if `train_lstm=False`
         if not train_lstm:
             for param in self.lstm.parameters():
-                param.requires_grad = False  # ✅ Prevents LSTM updates
+                param.requires_grad = False  # Prevents LSTM updates
 
-        # ✅ Final Linear layer (LSTM output + 7 extra input features)
+        # Final Linear layer (LSTM output + 7 extra input features)
         self.linear = nn.Linear(lstm_hidden_size + 7, 512)
 
     def forward(self, observations):
-        lidar_data = observations[:, 7:].unsqueeze(1)  # ✅ Extract LiDAR features
-        extra_features = observations[:, :7]  # ✅ Extract 7 scalar features
 
-        cnn_features = self.cnn(lidar_data)  # ✅ CNN processes LiDAR
-        cnn_features = cnn_features.unsqueeze(1)  # ✅ Add time dimension for LSTM
+        lidar_data = observations[:, 7:].unsqueeze(1)  # Extract LiDAR features
+        extra_features = observations[:, :7]  # Extract 7 scalar features
+        mlp_features = self.mlp_fc(extra_features)  # Pass through MLP
 
-        lstm_out, _ = self.lstm(cnn_features)  # ✅ Process with LSTM
-        lstm_features = lstm_out[:, -1, :]  # ✅ Take the last hidden state
+        cnn_features = self.cnn(lidar_data)  # CNN processes LiDAR
+        cnn_features = cnn_features.unsqueeze(1)  # Add time dimension for LSTM
 
-        # ✅ Combine LSTM output with extra input features
-        combined_features = torch.cat((lstm_features, extra_features), dim=1)
+        lstm_out, _ = self.lstm(cnn_features)  # Process with LSTM
+        lstm_features = lstm_out[:, -1, :]  # Take the last hidden state
+
+        # Combine LSTM output with extra input features
+        combined_features = torch.cat((mlp_features ,lstm_features, extra_features), dim=1)
 
         return self.linear(combined_features).linear(combined_features)
 

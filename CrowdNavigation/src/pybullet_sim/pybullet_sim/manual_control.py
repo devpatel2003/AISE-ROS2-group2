@@ -15,7 +15,7 @@ env = CrowdAvoidanceEnv(use_gui=True)
 # Reset environment
 obs, _ = env.reset()
 
-print("\n🚗 **Manual Drive Mode (WASD Controls)** 🚗")
+print("\n🚗 **Manual Drive Mode (WASD Controls)** ")
 print("[W] = Forward | [S] = Backward | [A] = Left | [D] = Right | [ESC] = Exit")
 
 # Loop indefinitely (exit when `ESC` is pressed)
@@ -50,7 +50,7 @@ while True:
 
     # Reset environment if done
     if done:
-        print("\n🔄 Episode ended (Goal reached or collision). Restarting...")
+        print("\n Episode ended (Goal reached or collision). Restarting...")
         obs, _ = env.reset()
 
     time.sleep(0.05)  # Control refresh rate (adjust for smoothness)

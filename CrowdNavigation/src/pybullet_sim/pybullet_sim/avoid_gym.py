@@ -88,7 +88,7 @@ class CrowdAvoidanceEnv(gym.Env):
         self.observation_space = spaces.Box(
             low=np.concatenate((
                 np.array([0, -math.pi, -5, -5, -5, -5, -5], dtype=np.float32),
-                np.full(NUM_READINGS * 5, 0, dtype=np.float32)  # ✅ Includes 5 past LiDAR frames
+                np.full(NUM_READINGS * 5, 0, dtype=np.float32)  # Includes 5 past LiDAR frames
             )),
             high=np.concatenate((
                 np.array([5, math.pi, 5, 5, 5, 5, 5], dtype=np.float32),

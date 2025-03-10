@@ -14,7 +14,7 @@ class CNNFeatureExtractor(BaseFeaturesExtractor):
     def __init__(self, observation_space, num_filters=64):
         super(CNNFeatureExtractor, self).__init__(observation_space, features_dim=512)
 
-        # ✅ CNN layers to process 1D LiDAR data
+        # CNN layers to process 1D LiDAR data
         self.cnn = nn.Sequential(
             nn.Conv1d(in_channels=1, out_channels=num_filters, kernel_size=5, stride=1, padding=2),
             nn.ReLU(),
@@ -27,7 +27,7 @@ class CNNFeatureExtractor(BaseFeaturesExtractor):
         self.linear = nn.Linear(num_filters * 2, 512)  
 
     def forward(self, observations):
-        lidar_data = observations[:, 7:]  # ✅Extract only LiDAR data
+        lidar_data = observations[:, 7:]  # Extract only LiDAR data
         latest_lidar_scan = lidar_data[:, -450:]  # Use only the most recent scan
 
         latest_lidar_scan = latest_lidar_scan.unsqueeze(1)  
@@ -57,7 +57,7 @@ if __name__ == "__main__":
         eval_freq=250_000  # Evaluates every 250K steps
     )
 
-    # ✅ Create PPO model with CNN Feature Extractor
+    # Create PPO model with CNN Feature Extractor
     obstacle_avoidance_model = PPO(
         "CnnPolicy",
         envs,
@@ -86,4 +86,4 @@ if __name__ == "__main__":
 
     # Save the trained model
     obstacle_avoidance_model.save("./ppo_obstacle_models/ppo_obstacle_avoidance_1")
-    print("🎯 Training Complete! Model Saved.")
+    print(" Training Complete! Model Saved.")
