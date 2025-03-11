@@ -17,3 +17,11 @@ This final model took 1 hour to train, this is the equivalent to 100k steps of t
 
 The next objective is to add static objects, and continue training the model to avoid collisions. This will involve increasing the observation space to include lidar data. My guess is this will take a lot longer to train due to the addition of 360 new inputs. Additionally, this model can be repurposed to be used within a ROS environment since the actions outputted are equivalent to the cmd_vel.linear and cmd_vel.angular msg types found in geometry_msgs.
 
+### How to run
+1. cd into CrowdNaviation
+2. conda env create -f environment.yml
+3. conda activate crowd-nav
+4. cd CrowdNavigation\src\pybullet_sim\pybullet_sim
+5. python manual_control.py
+6. Use arrow keys to drive
+
