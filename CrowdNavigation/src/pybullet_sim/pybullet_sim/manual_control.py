@@ -1,7 +1,7 @@
 import gymnasium as gym
 import pybullet as p
 import pybullet_data
-from crowd_gym_obs import CrowdAvoidanceEnv
+from race_track_enviornment import CrowdAvoidanceEnv
 import time
 import keyboard  # ✅ Used for key detection
 
@@ -15,8 +15,8 @@ env = CrowdAvoidanceEnv(use_gui=True)
 # Reset environment
 obs, _ = env.reset()
 
-print("\n🚗 **Manual Drive Mode (WASD Controls)** ")
-print("[W] = Forward | [S] = Backward | [A] = Left | [D] = Right | [ESC] = Exit")
+print("\n **Manual Drive Mode (WASD Controls)** ")
+print("[^] = Forward | [v] = Backward | [<] = Left | [>] = Right | [ESC] = Exit")
 
 # Loop indefinitely (exit when `ESC` is pressed)
 while True:
@@ -27,13 +27,13 @@ while True:
     angular_speed = 0.0
 
     # Read keyboard inputs
-    if keyboard.is_pressed("w"):  # Forward
+    if keyboard.is_pressed("up"):    # Forward
         linear_speed = MAX_LINEAR_SPEED
-    if keyboard.is_pressed("s"):  # Backward
+    if keyboard.is_pressed("down"):  # Backward
         linear_speed = -MAX_LINEAR_SPEED
-    if keyboard.is_pressed("a"):  # Turn Left
+    if keyboard.is_pressed("left"):  # Turn Left
         angular_speed = MAX_ANGULAR_SPEED
-    if keyboard.is_pressed("d"):  # Turn Right
+    if keyboard.is_pressed("right"): # Turn Right
         angular_speed = -MAX_ANGULAR_SPEED
 
     # Exit simulation if `ESC` is pressed
