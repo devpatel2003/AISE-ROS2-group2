@@ -8,33 +8,34 @@ import math
 import os
 
 # ----- TUNABLE PARAMETERS FOR ENVIORMENT (not hyperparams) -----
-ENV_BOUNDARY = 5.0          # Robot operates within -2..2 in x,y
-MIN_DISTANCE = ENV_BOUNDARY * 0.5 # Spawn the robot and goal this distance apart
-EP_LENGTH = 10000           # Max steps per episode
+ENV_BOUNDARY = 2.0          # Robot operates within -2..2 in x,y
+MIN_DISTANCE = ENV_BOUNDARY * 0.8 # Spawn the robot and goal this distance apart
+EP_LENGTH = 10_000           # Max steps per episode
 TIME_STEP = 1.0 / 240
 WHEEL_BASE = 0.14           # Distance between left & right wheels
 MAX_LINEAR_SPEED = 0.2       # m/s
 MAX_ANGULAR_SPEED = 1     # rad/s
 GOAL_REACHED_DIST = 0.2     # Robot is "at" goal if closer than this
 
-NUM_MOVING_OBSTACLES = 60
+NUM_MOVING_OBSTACLES = 10
 OBSTACLE_SPEED = 0.1
 
 # LiDAR specs
 NUM_READINGS = 450                # 360° / 0.8° ≈ 450
-MAX_LIDAR_RANGE = 12.0            # Up to ~12 m for black objects
+MAX_LIDAR_RANGE = 3.0            # Up to ~12 m for black objects
 MIN_LIDAR_RANGE = 0.03            # Minimum measurable distance
-LIDAR_HEIGHT_OFFSET = 0.2         # Slightly above ground/robot’s base
+LIDAR_HEIGHT_OFFSET = 0.1         # Slightly above ground/robot’s base
 
-PENALTY_COLLISION = -10     
+# Reward & penalty weights        #-0.2, 500, 10, 3, 10, 1
+REWARD_GOAL_BONUS = 100_000
+REWARD_DTG_POSITIVE = 1    # Reward for reducing distance to goal, after * dist_improve number becomes very small
+REWARD_HTG_POSITIVE = 1    # Reward for facing goal
+REWARD_ACTION_HIGH = 1  # Reward for forward & near-zero rotation
+REWARD_ACTION_MED = 1       # Reward for forward & rotating
+PENALTY_COLLISION = -100 
+PENALTY_NEAR_COLLISION = -2  
 PENALTY_TURN = 0
-PENALTY_TIME =0          #-0.2, 500, 10, 3, 10, 1
-REWARD_GOAL_BONUS = 0
-REWARD_DTG_POSITIVE = 0     # Reward for reducing distance to goal
-REWARD_HTG_POSITIVE = 0    # Reward for facing goal
-REWARD_ACTION_HIGH = 0   # Reward for forward & near-zero rotation
-REWARD_ACTION_MED = 0       # Reward for forward & rotating
-
+PENALTY_TIME = 0 #-1.125   
  
 
 class MovingObstacle:
@@ -45,12 +46,12 @@ class MovingObstacle:
         self.robot = robot
         p.setCollisionFilterPair(self.body, self.robot, -1, -1, enableCollision=True)
         direction = np.array([
-            random.uniform(-1, 1),
-            random.uniform(-1, 1),
-            0
+            random.uniform(-1, 1), # x direction
+            random.uniform(-1, 1), # y direction
+            0 # z direction
         ])
 
-        self.direction = direction * OBSTACLE_SPEED * TIME_STEP # e.g. scale speed to 25%
+        self.direction = direction * OBSTACLE_SPEED * TIME_STEP # scale speed 
 
 
     def move(self):
@@ -74,25 +75,25 @@ class CrowdAvoidanceEnv(gym.Env):
         p.setTimeStep(TIME_STEP)
         p.setPhysicsEngineParameter(numSubSteps=5)
 
-        self.past_observations = np.zeros((5, NUM_READINGS))  # Store last 5 LiDAR frames
+        self.past_observations = np.zeros((5, NUM_READINGS))  # Store last 5 LiDAR frames (framestacking)
 
 
-        # [v, w]: linear & angular velocity commands, matches ros2 outputs
+        # [v, w]: linear & angular velocity commands, matches ros2 outputs, low is lowest value each command can be, high is the highest value the command can be
         self.action_space = spaces.Box(
             low=np.array([-1, -1]),
             high=np.array([1,  1]),
             dtype=np.float32
         )
 
-        # Define observation space: [goal_dist, goal_angle, ax, ay, wx, wy, wz] + LiDAR readings
+        # Define observation space: [goal_dist, goal_angle, ax, ay, wx, wy, wz] + LiDAR readings (including past 5)
         self.observation_space = spaces.Box(
             low=np.concatenate((
                 np.array([0, -math.pi, -5, -5, -5, -5, -5], dtype=np.float32),
-                np.full(NUM_READINGS * 5, 0, dtype=np.float32)  # Includes 5 past LiDAR frames
+                np.full(NUM_READINGS * 5, 0, dtype=np.float32)  # Create (num_reading * past observation) sized array filled with zeros for the lowest number a lidar scan can be
             )),
             high=np.concatenate((
                 np.array([5, math.pi, 5, 5, 5, 5, 5], dtype=np.float32),
-                np.full(NUM_READINGS * 5, MAX_LIDAR_RANGE, dtype=np.float32)
+                np.full(NUM_READINGS * 5, MAX_LIDAR_RANGE, dtype=np.float32)  # Same as low, but the max lidar value (12)
             )),
             dtype=np.float32
         )
@@ -124,17 +125,28 @@ class CrowdAvoidanceEnv(gym.Env):
 
         plane_id = p.loadURDF("plane.urdf")
 
+        # Find a random staring configuration that satisfies min distance condition
+        while True:
+                # Robot on left half
+                start_x = random.uniform(-ENV_BOUNDARY + 0.5, -0.5)
+                start_y = random.uniform(-ENV_BOUNDARY + 0.5, ENV_BOUNDARY - 0.5)
 
+                # Ball (goal) on right half
+                goal_x = random.uniform(0.5, ENV_BOUNDARY - 0.5)
+                goal_y = random.uniform(-ENV_BOUNDARY + 0.5, ENV_BOUNDARY - 0.5)
 
+                distance = np.sqrt((goal_x - start_x)**2 + (goal_y - start_y)**2)
+                if distance >= MIN_DISTANCE:
+                    break
         
         # Spawn goal
-        self.goal_position = [1000, 1000, 0.05]
+        self.goal_position = [goal_x, goal_y, 0.05]
         self.goal_marker = p.loadURDF("sphere_small.urdf", basePosition=self.goal_position, globalScaling=1)
         p.changeVisualShape(self.goal_marker, -1, rgbaColor=[0, 1, 0, 1])
 
         self.robot = p.loadURDF(
             "C:/Users/Dev/Documents/Personal/Projects/CrowdNavigation/src/pybullet_sim/urdf/MicroROS.urdf",
-            basePosition=[0, 0, 0.05], # start_x
+            basePosition=[start_x, start_y, 0.05], 
             useFixedBase=False
         )
 
@@ -218,7 +230,7 @@ class CrowdAvoidanceEnv(gym.Env):
     
     def _compute_reward(self, action):
         lin_vel, ang_vel = action
-        dtg_r, htg_r, action_r, time_penalty = 0, 0, 0, 0
+        dtg_r, htg_r, action_r, time_penalty, min_distance_p  = 0, 0, 0, 0, 0
 
         robot_pos, _ = p.getBasePositionAndOrientation(self.robot)
         gx, gy, _ = self.goal_position
@@ -230,12 +242,8 @@ class CrowdAvoidanceEnv(gym.Env):
         prev_dist = getattr(self, "previous_goal_distance", goal_dist)
         dist_improvement = prev_dist - goal_dist
         self.previous_goal_distance = goal_dist
-        dtg_r = REWARD_DTG_POSITIVE * max(dist_improvement, 0) # ensures only positive improvements count
-        
-        '''#dtg_r = 1 * (1 - goal_dist/ENV_BOUNDARY) #increase reward closer to goal
-        if dist_improvement > 0.01:
-            dtg_r = REWARD_DTG_POSITIVE
-        #dtg_r = 1*(dist_improvement)'''
+        dtg_r = REWARD_DTG_POSITIVE * max(dist_improvement*1000, 0) #*1000 because dist improvement is 0.00002
+       
 
 
         # Heading to goal reward
@@ -244,12 +252,6 @@ class CrowdAvoidanceEnv(gym.Env):
         angle_improvement = (abs(previous_goal_angle) - abs(goal_angle))  # Increase reward for reducing error
         self.previous_goal_angle = goal_angle 
         htg_r = REWARD_HTG_POSITIVE* np.cos(goal_angle) # facing goal (0) = +1, facing away (180) = -1 
-
-        '''if angle_improvement > 0.0001:
-            htg_r = REWARD_HTG_POSITIVE'''
-        '''if abs(ang_vel) > MAX_LINEAR_SPEED*0.5:  #  Turning too much
-            turn_p = PENALTY_TURN '''
-    
         
         # Action reward
         if lin_vel >= 0 and abs(goal_angle) < np.deg2rad(5):
@@ -258,14 +260,14 @@ class CrowdAvoidanceEnv(gym.Env):
         elif lin_vel >= 0:
             action_r = REWARD_ACTION_MED * lin_vel
 
-        if lin_vel > 0:
-            action_r = 1
         
         lidar_scan = self._perform_lidar_scan()
         min_distance = np.min(lidar_scan)  # Closest object detected by LiDAR
 
-        if min_distance < 0.5:
-            action_r += -10
+        if min_distance < 0.2:
+            min_distance_p = PENALTY_NEAR_COLLISION
+        elif min_distance < 0.3:
+            min_distance_p = PENALTY_NEAR_COLLISION * (0.3 - min_distance)
        
 
         contacts = p.getContactPoints(self.robot)
@@ -275,15 +277,15 @@ class CrowdAvoidanceEnv(gym.Env):
             if contact_id != 0:
                 self.last_collision = contact_id
                 #print(f"Collision with object {contact_id} at {contacts[0][6:9]}")
-                return PENALTY_COLLISION, False
+                return PENALTY_COLLISION, True
             
         #time_penalty = -10 * (self.current_step / EP_LENGTH)  #  Larger time penalty over time
         time_penalty = PENALTY_TIME
 
-        '''if goal_dist < GOAL_REACHED_DIST:
-            return REWARD_GOAL_BONUS + time_penalty, True'''
-
-        reward = action_r  #time_penalty + dtg_r + htg_r + action_r
+        if goal_dist < GOAL_REACHED_DIST:
+            return REWARD_GOAL_BONUS + time_penalty, True
+        reward = action_r + dtg_r + htg_r + action_r + min_distance_p + time_penalty
+        #print(dtg_r , htg_r , min_distance_p , time_penalty)
         return reward, False
     
     def _perform_lidar_scan(self):
@@ -291,39 +293,37 @@ class CrowdAvoidanceEnv(gym.Env):
         Returns an array of distances (one per angle).
         """
 
-        # Get robot pose
+        # Get robot position and orientation
         robot_pos, robot_ori = p.getBasePositionAndOrientation(self.robot)
         robot_x, robot_y, robot_z = robot_pos
+        _, _, robot_yaw = p.getEulerFromQuaternion(robot_ori)  # Extract yaw angle
 
-        # Store distances
-        ranges = [] 
+        start_pos = [robot_x, robot_y, robot_z + LIDAR_HEIGHT_OFFSET]
+        angles = np.linspace(-np.pi, np.pi, NUM_READINGS, endpoint=False)
 
-        # Sweep from -π to +π with ~0.8° steps
-        for angle in np.linspace(-np.pi, np.pi, NUM_READINGS, endpoint=False):
-            dx = np.cos(angle)
-            dy = np.sin(angle)
-            start_pos = [robot_x, robot_y, robot_z + LIDAR_HEIGHT_OFFSET]
-            end_pos = [
-                robot_x + dx * MAX_LIDAR_RANGE,
-                robot_y + dy * MAX_LIDAR_RANGE,
-                robot_z + LIDAR_HEIGHT_OFFSET
-            ]
+        # Rotate scan angles based on robot orientation
+        rotated_angles = angles + robot_yaw  
 
-            # Ray test
-            hit_result = p.rayTest(start_pos, end_pos)[0]
-            hit_object_id = hit_result[0]
-            hit_fraction = hit_result[2]
+        # Compute end positions with the rotated angles
+        end_positions = [
+            [robot_x + np.cos(angle) * MAX_LIDAR_RANGE,
+            robot_y + np.sin(angle) * MAX_LIDAR_RANGE,
+            robot_z + LIDAR_HEIGHT_OFFSET]
+            for angle in rotated_angles
+        ]
 
-            # Compute distance
+        # Perform batch raycast
+        results = p.rayTestBatch([start_pos] * NUM_READINGS, end_positions)
+
+        ranges = []
+        for res in results:
+            hit_object_id = res[0]
+            hit_fraction = res[2]
             distance = hit_fraction * MAX_LIDAR_RANGE if hit_object_id != -1 else MAX_LIDAR_RANGE
             distance = max(distance, MIN_LIDAR_RANGE)
-
-            # Normalize so MIN_LIDAR_RANGE → 1 and MAX_LIDAR_RANGE → 0
-            normalized_distance = 1 - (distance - MIN_LIDAR_RANGE) / (MAX_LIDAR_RANGE - MIN_LIDAR_RANGE)
-            ranges.append(normalized_distance)
+            ranges.append(distance)
 
         return np.array(ranges, dtype=np.float32)
-
 
     def _get_observation(self):
         # LiDAR scan 
