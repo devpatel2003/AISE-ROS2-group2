@@ -6,6 +6,7 @@ def heuristic(a, b):
     """Euclidean distance heuristic for grid"""
     return math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
 
+
 def astar(grid, start, goal):
     """
     Run A* on a binary grid with 8-connected movement (diagonals allowed).

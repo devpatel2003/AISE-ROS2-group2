@@ -13,6 +13,7 @@ from stable_baselines3.common.vec_env import DummyVecEnv
 
 from IRL_maze_gym import CrowdAvoidanceEnv  # Your environment
 
+
 # === Load expert trajectories ===
 def load_trajectories(directory, limit=None):
     demos = []

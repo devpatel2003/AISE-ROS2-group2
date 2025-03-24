@@ -12,6 +12,7 @@ STEPS_PER_WAYPOINT = 1000
 SAVE_DIR = "expert_trajectories1"
 os.makedirs(SAVE_DIR, exist_ok=True)
 
+
 def compute_action_to_point(current_pos, current_yaw, target_point, speed_scale=1.0):
     dx = target_point[0] - current_pos[0]
     dy = target_point[1] - current_pos[1]

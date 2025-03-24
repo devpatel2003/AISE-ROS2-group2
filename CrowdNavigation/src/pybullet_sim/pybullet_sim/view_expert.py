@@ -14,6 +14,7 @@ grid_map = data["grid_map"]
 start = data["start"]
 goal = data["goal"]
 
+
 # Create environment using preset map and positions
 env = CrowdAvoidanceEnv(
     use_gui=True,

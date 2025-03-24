@@ -10,6 +10,7 @@ import os
 import time
 from astar import astar
 
+
 # ----- TUNABLE PARAMETERS FOR ENVIORMENT (not hyperparams) -----
 ENV_BOUNDARY = 2.0          # Robot operates within -2..2 in x,y
 MIN_DISTANCE = ENV_BOUNDARY * 0.8 # Spawn the robot and goal this distance apart
