@@ -1,7 +1,7 @@
 import gymnasium as gym
 import pybullet as p
 import pybullet_data
-from static_gym import CrowdAvoidanceEnv
+from race_track_enviornment import CrowdAvoidanceEnv
 import time
 import keyboard  # ✅ Used for key detection
 import matplotlib.pyplot as plt
@@ -12,13 +12,10 @@ MAX_LINEAR_SPEED = 1  # m/s
 MAX_ANGULAR_SPEED = 1  # rad/s
 show_lidar = False
 
-# Create environment with GUI
 env = CrowdAvoidanceEnv(use_gui=True)
-
-# Reset environment
 obs, _ = env.reset()
 
-print("\n🚗 **Manual Drive Mode (WASD Controls)** ")
+print("\n **Manual Drive Mode (WASD Controls)** ")
 print("[W] = Forward | [S] = Backward | [A] = Left | [D] = Right | [ESC] = Exit")
 
 def plot_lidar_scan(scan):
