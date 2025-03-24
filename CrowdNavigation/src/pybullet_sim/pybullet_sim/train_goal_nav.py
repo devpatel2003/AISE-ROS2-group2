@@ -6,7 +6,7 @@ from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import SubprocVecEnv #dont use with lstm
 import torch.nn as nn
-from crowd_gym_obs import CrowdAvoidanceEnv
+from CrowdNavigation.src.pybullet_sim.pybullet_sim.goal_nav_gym import CrowdAvoidanceEnv
 import time  # Needed for rendering
 import pybullet as p
 import shutil

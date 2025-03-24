@@ -1,0 +1,162 @@
+import os
+import pickle
+import shutil
+import numpy as np
+import torch
+import gymnasium as gym
+
+from stable_baselines3 import PPO
+from stable_baselines3.common.vec_env import SubprocVecEnv
+from stable_baselines3.common.logger import configure
+from stable_baselines3.common.vec_env import VecEnvWrapper
+
+
+from imitation.algorithms.adversarial import airl
+from imitation.data.types import TrajectoryWithRew
+from imitation.data.wrappers import RolloutInfoWrapper
+from imitation.util.networks import RunningNorm
+from imitation.rewards.reward_nets import BasicRewardNet
+
+from gymnasium.wrappers import RecordVideo
+
+from IRL_maze_gym import CrowdAvoidanceEnv  # Your custom env
+
+# === Torch Optimizations ===
+torch.backends.cudnn.benchmark = True
+device = "cuda"
+
+# === Load expert data ===
+def load_valid_trajectories(directory, limit=None):
+    demos = []
+    files = sorted(os.listdir(directory))[:limit]
+    for fname in files:
+        with open(os.path.join(directory, fname), "rb") as f:
+            traj = pickle.load(f)
+            demos.append(traj)
+
+    print(f"✅ Loaded {len(demos)} valid expert trajectories.")
+    return demos
+
+
+class StripSeedVecWrapper(VecEnvWrapper):
+    """
+    A 'nuclear option' VecEnv wrapper that removes the 'seed' (and 'options')
+    kwargs from reset() calls at the vectorized environment level.
+
+    Implements all VecEnvWrapper abstract methods so it can be instantiated
+    without error.
+    """
+
+    def reset(self, *args, **kwargs):
+        # remove any 'seed'/'options' from the kwargs
+        kwargs.pop("seed", None)
+        kwargs.pop("options", None)
+        return self.venv.reset(*args, **kwargs)
+
+    def step_async(self, actions):
+        return self.venv.step_async(actions)
+
+    def step_wait(self):
+        return self.venv.step_wait()
+
+    def close(self):
+        return self.venv.close()
+
+    def env_method(self, method_name, *method_args, indices=None, **method_kwargs):
+        return self.venv.env_method(method_name, *method_args, indices=indices, **method_kwargs)
+
+    def get_attr(self, attr_name, indices=None):
+        return self.venv.get_attr(attr_name, indices)
+
+    def set_attr(self, attr_name, value, indices=None):
+        return self.venv.set_attr(attr_name, value, indices)
+
+
+# === Vectorized Env Setup ===
+def make_env():
+    def _init():
+        return CrowdAvoidanceEnv()
+    return _init
+
+if __name__ == "__main__":
+    NUM_ENVS = 8
+    venv = SubprocVecEnv([make_env() for _ in range(NUM_ENVS)])
+    venv = RolloutInfoWrapper(venv)
+
+
+    # === Logging ===
+    log_dir = "./airl_logs/"
+    if os.path.exists(log_dir):
+        shutil.rmtree(log_dir)
+    os.makedirs(log_dir, exist_ok=True)
+    logger = configure(log_dir, ["stdout", "tensorboard"])
+
+    # === Load expert trajectories ===
+    expert_demos = load_valid_trajectories("expert_trajectories", limit=100)
+
+    # === Reward network ===
+    reward_net = BasicRewardNet(
+        observation_space=venv.observation_space,
+        action_space=venv.action_space,
+        
+    )
+
+    # === Generator agent (PPO) ===
+    gen_algo = PPO(
+        policy="MlpPolicy",
+        env=venv,
+        n_steps=4096,
+        batch_size=2048,
+        learning_rate=3e-4,
+        n_epochs=10,
+        device=device,
+        verbose=1,
+    )
+    gen_algo.set_logger(logger)
+    venv = StripSeedVecWrapper(venv)
+
+    # === AIRL Trainer ===
+    airl_trainer = airl.AIRL(
+        demonstrations=expert_demos,
+        demo_batch_size=64,
+        n_disc_updates_per_round=4,
+        venv=venv,
+        gen_algo=gen_algo,
+        reward_net=reward_net
+    )
+
+    # === Train AIRL ===
+
+    airl_trainer.train(total_timesteps=1_000_000)
+
+    # === Save models ===
+    os.makedirs("airl_models", exist_ok=True)
+    gen_algo.save("airl_models/airl_policy")
+    reward_net.save("airl_models/learned_reward.pt")
+    print("✅ AIRL training complete.")
+
+    # === Optional: Record final policy rollout ===
+    VIDEO_DIR = "./airl_videos/"
+    os.makedirs(VIDEO_DIR, exist_ok=True)
+
+    video_env = CrowdAvoidanceEnv(use_gui=False)
+    video_env = RecordVideo(
+        video_env,
+        video_folder=VIDEO_DIR,
+        episode_trigger=lambda episode_id: True,
+        name_prefix="airl_demo"
+    )
+
+    policy = PPO.load("airl_models/airl_policy", env=video_env)
+    obs, _ = video_env.reset()
+    done = False
+    step = 0
+    MAX_STEPS = 3000
+
+    while not done and step < MAX_STEPS:
+        action, _ = policy.predict(obs, deterministic=True)
+        obs, reward, done, _, _ = video_env.step(action)
+        step += 1
+
+    video_env.close()
+    print(f"🎥 Video saved to {VIDEO_DIR}")

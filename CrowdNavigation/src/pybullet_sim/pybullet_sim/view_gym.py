@@ -8,7 +8,7 @@ def main():
     env.reset()
     
     while True:
-        action = env.action_space.sample()  # Sample a random action
+        action = [1,0]  # Sample a random action
         observation, reward, done, _, _ = env.step(action)
         print("Observation shape:", observation.shape)
         
