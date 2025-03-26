@@ -1,6 +1,6 @@
-import gymnasium as gym
-from gymnasium import Env
-from gymnasium import spaces
+import gym 
+from gym import Env
+from gym import spaces
 import numpy as np
 import pybullet as p
 import pybullet_data
@@ -119,7 +119,7 @@ class CrowdAvoidanceEnv(Env):
     
 
 
-    def reset(self, *, seed=None, options=None):
+    def reset(self):
 
 
         if hasattr(self, "debug_lines"):
@@ -247,7 +247,7 @@ class CrowdAvoidanceEnv(Env):
             self.debug_lines.append(line_id)
 
         self.robot = p.loadURDF(
-            "C:/Users/Dev/Documents/Personal/Projects/CrowdNavigation/src/pybullet_sim/urdf/MicroROS.urdf",
+            "C:/Users/devpa/Documents/Personal/Projects/AISE-ROS2-group2/CrowdNavigation/src/pybullet_sim/urdf/MicroROS.urdf",
             basePosition=[start_x, start_y, 0.05], 
             useFixedBase=False
         )
@@ -266,7 +266,7 @@ class CrowdAvoidanceEnv(Env):
 
         self.previous_goal_distance = 0
         
-        return self._get_observation(), {}
+        return self._get_observation()
 
 
 
@@ -313,8 +313,9 @@ class CrowdAvoidanceEnv(Env):
                 "r": self.episode_reward,
                 "l": self.episode_length
             }
-                
-        return obs, reward, done, False, info
+
+        
+        return obs, reward, done, info
 
     def get_goal_angle(self):
         robot_pos, robot_ori = p.getBasePositionAndOrientation(self.robot)

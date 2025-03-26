@@ -37,7 +37,7 @@ for traj_id in range(NUM_TRAJECTORIES):
     print(f"Using speed scale: {speed_scale:.2f}")
 
     env = CrowdAvoidanceEnv(use_gui=False)
-    obs, _ = env.reset()
+    obs = env.reset()
 
     astar_world_path = [env.grid_to_world(x, y) for (y, x) in env.astar_path]
 
