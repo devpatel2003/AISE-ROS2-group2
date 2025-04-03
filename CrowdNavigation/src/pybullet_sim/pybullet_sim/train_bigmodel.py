@@ -49,8 +49,8 @@ class CustomCNNLSTM(BaseFeaturesExtractor):
             nn.Conv1d(in_channels=num_filters, out_channels=num_filters * 2, kernel_size=3, stride=1, padding=0),
             nn.BatchNorm1d(num_filters * 2),
             nn.ReLU(),
-            nn.AdaptiveAvgPool1d(1), # Reduce each frame to a single vector
-            nn.Flatten()
+            #nn.AdaptiveAvgPool1d(1), # Reduce each frame to a single vector
+            #nn.Flatten()
         )
 
         # 3rd: LSTM for dynamic obstacle tracking
@@ -102,6 +102,8 @@ class CustomCNNLSTM(BaseFeaturesExtractor):
         # Apply CNN frame-by-frame (in parallel)
         # Reshape to (5, 1, 72)
         cnn_feats = self.cnn(lidar_data) 
+
+
 
         # Use dummy layer instead of lstm
         if self.train_lstm:

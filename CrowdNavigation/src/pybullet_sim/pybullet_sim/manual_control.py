@@ -1,7 +1,7 @@
 import gymnasium as gym
 import pybullet as p
 import pybullet_data
-from race_track_enviornment import CrowdAvoidanceEnv
+from td3_gym import CrowdAvoidanceEnv
 import time
 import keyboard  # ✅ Used for key detection
 import matplotlib.pyplot as plt
@@ -11,7 +11,8 @@ import numpy as np
 MAX_LINEAR_SPEED = 1  # m/s
 MAX_ANGULAR_SPEED = 1  # rad/s
 show_lidar = False
-
+robot_state = 4
+lidar_size = 64
 env = CrowdAvoidanceEnv(use_gui=True)
 obs, _ = env.reset()
 
@@ -24,8 +25,8 @@ def plot_lidar_scan(scan):
     x = scan * np.cos(angles)  # Convert polar to cartesian
     y = scan * np.sin(angles)
     plt.scatter(x, y, s=2, color='red')  # Plot scan points
-    plt.xlim(-3, 3)
-    plt.ylim(-3, 3)
+    plt.xlim(-5, 5)
+    plt.ylim(-5, 5)
     plt.xlabel("X (meters)")
     plt.ylabel("Y (meters)")
     plt.title("Real-time LiDAR Scan")
@@ -39,7 +40,7 @@ if show_lidar:
 
 # Loop indefinitely (exit when `ESC` is pressed)
 while True:
-    env.render()  # Ensure PyBullet GUI is active
+    #env.render()  # Ensure PyBullet GUI is active
 
     
 
@@ -69,20 +70,19 @@ while True:
     # Send action to environment
     action = [linear_speed, angular_speed]  # [v, w] format
     obs, reward, done, _, _ = env.step(action)
-
-    lidar_scan = obs[7:79]
-
+    lidar_scan = obs[robot_state:]  # Extract LiDAR scan from observation
     if show_lidar:
         plot_lidar_scan(lidar_scan)  # Update plot
 
     # Print debug info (optional)
-    print(f"Action: {action} | Reward: {reward:.3f}")
+    print(f"Action: {action} | Reward: {reward:.3f} | min: {min(lidar_scan)}")
+
 
 
     # Reset environment if done
     if done:
         print("\n Episode ended (Goal reached or collision). Restarting...")
-        obs, _ = env.reset()
+        obs = env.reset()
 
     time.sleep(0.0000001)  # Control refresh rate (adjust for smoothness)
 

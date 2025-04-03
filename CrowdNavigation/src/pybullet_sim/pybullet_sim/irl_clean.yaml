@@ -1,0 +1,6 @@
+name: irl
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+prefix: C:\Users\devpa\anaconda3\envs\irl
