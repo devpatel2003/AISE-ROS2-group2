@@ -14,18 +14,19 @@ from astar import astar
 # ----- TUNABLE PARAMETERS FOR ENVIORMENT (not hyperparams) -----
 ENV_BOUNDARY = 2.0          # Robot operates within -2..2 in x,y
 MIN_DISTANCE = ENV_BOUNDARY * 0.8 # Spawn the robot and goal this distance apart
-EP_LENGTH = 10_000           # Max steps per episode
+EP_LENGTH = 15_000           # Max steps per episode
 TIME_STEP = 1.0 / 240
 WHEEL_BASE = 0.14           # Distance between left & right wheels
 MAX_LINEAR_SPEED = 0.3       # m/s
 MAX_ANGULAR_SPEED = 1     # rad/s
-GOAL_REACHED_DIST = 0.25     # Robot is "at" goal if closer than this
+GOAL_REACHED_DIST = 0.2     # Robot is "at" goal if closer than this
 
 NUM_MOVING_OBSTACLES = 10
 OBSTACLE_SPEED = 0.1
 
 WP_DISTANCE = 0.8
 RADIUS_COLLISION = 0.3
+CLUTTER_PROB = 0.2
 
 # LiDAR specs
 NUM_READINGS = 72                # 360° / 0.8° = 450 <- LIDAR ON REAL WORLD, 360° / 5° = 72 <- SIM  
@@ -72,12 +73,12 @@ class CrowdAvoidanceEnv(Env):
 
         self.observation_space = spaces.Box(
             low=np.concatenate((
-                np.array([0, -math.pi], dtype=np.float32),
+                np.array([0, -math.pi, 0], dtype=np.float32),
                 np.full(NUM_READINGS * 5, 0, dtype=np.float32)
             )),
             high=np.concatenate((
-                np.array([5, math.pi], dtype=np.float32),
-                np.full(NUM_READINGS * 5, MAX_LIDAR_RANGE, dtype=np.float32)
+                np.array([5, math.pi, 1], dtype=np.float32),
+                np.full(NUM_READINGS * 5, 1, dtype=np.float32)
             )),
             dtype=np.float32
         )
@@ -88,6 +89,7 @@ class CrowdAvoidanceEnv(Env):
         self.current_step = 0
         self.episode_reward = 0.0
         self.episode_length = 0
+        self.collision_happened = False
 
         self.current_wp = None
         self.num_steps_since_wp = 0
@@ -137,8 +139,9 @@ class CrowdAvoidanceEnv(Env):
         self.num_steps_since_wp = 0
         self.wp_reached = False
         self.prev_wp_dist = None
+        self.collision_happened = False
 
-        wall_half_extents = [self.cell_size * 0.45] * 3
+        wall_half_extents = [self.cell_size * 0.5] * 3
 
         # Use preset grid, start, goal if provided
         if self.preset_grid is not None and self.preset_start is not None and self.preset_goal is not None:
@@ -154,7 +157,7 @@ class CrowdAvoidanceEnv(Env):
                 # Add random internal obstacles
                 for y in range(self.grid_size):
                     for x in range(self.grid_size):
-                        if random.random() < 0:
+                        if random.random() < CLUTTER_PROB:
                             grid_map[y, x] = 1
 
                 # Try placing robot and goal
@@ -227,11 +230,11 @@ class CrowdAvoidanceEnv(Env):
                     self.obstacle_ids.append(body_id)
 
         self.goal_position = [goal_x, goal_y, 0.05]
-        self.goal_marker = p.loadURDF("sphere_small.urdf", basePosition=self.goal_position, globalScaling=1)
+        self.goal_marker = p.loadURDF("sphere_small.urdf", basePosition=self.goal_position, globalScaling=2)
         p.changeVisualShape(self.goal_marker, -1, rgbaColor=[0, 1, 0, 1])
 
         # Draw A* path
-        self.debug_lines = []
+        '''self.debug_lines = []
         for i in range(len(self.astar_path) - 1):
             (gy1, gx1) = self.astar_path[i]
             (gy2, gx2) = self.astar_path[i + 1]
@@ -244,10 +247,10 @@ class CrowdAvoidanceEnv(Env):
                 lineWidth=2.0,
                 lifeTime=0
             )
-            self.debug_lines.append(line_id)
+            self.debug_lines.append(line_id)'''
 
         self.robot = p.loadURDF(
-            "C:/Users/devpa/Documents/Personal/Projects/AISE-ROS2-group2/CrowdNavigation/src/pybullet_sim/urdf/MicroROS.urdf",
+            "./urdf/MicroROS.urdf",
             basePosition=[start_x, start_y, 0.05], 
             useFixedBase=False
         )
@@ -360,7 +363,7 @@ class CrowdAvoidanceEnv(Env):
         self.previous_goal_distance = goal_dist
         #dtg_r = REWARD_DTG_POSITIVE * max(dist_improvement*1000, 0) #*1000 because dist improvement is 0.00002
         if dist_improvement > 0.0001:
-            base_reward += 0
+            base_reward += 0.5
        
 
         # 2) Goal reached
@@ -374,17 +377,21 @@ class CrowdAvoidanceEnv(Env):
         
    
         if min_distance < 0.125:
-            #print("🚨 Robot hit a wall or obstacle!")
-            return PENALTY_COLLISION, False
+            print("🚨 Robot hit a wall or obstacle!")
+            self.collision_happened = True
+            return PENALTY_COLLISION, True
             collision_p = PENALTY_COLLISION # 5 BIG BOOMS for collision
-        elif min_distance < 0.15:
-            penalty = -0.025
+        elif min_distance < 0.20:
+            penalty = -1
+        elif min_distance < 0.25:
+            penalty = -0.25
         
         contacts = p.getContactPoints(self.robot)
         for contact in contacts:
             if contact[2] not in [self.robot, self.plane_id, self.goal_marker] and contact[2] in self.obstacle_ids:
+                self.collision_happened = True
                 print("🚨 Robot hit a wall or obstacle!")
-                return PENALTY_COLLISION, False
+                return PENALTY_COLLISION, True
             
         self.astar_world_path = [self.grid_to_world(x, y) for (y, x) in self.astar_path]
         min_astar_dist = min(
@@ -462,11 +469,9 @@ class CrowdAvoidanceEnv(Env):
         goal_dy = self.goal_position[1] - robot_y
         goal_distance = np.sqrt(goal_dx**2 + goal_dy**2)
         goal_angle = self.get_goal_angle()
-
-   
         
         obs = np.concatenate((
-                np.array([goal_distance, goal_angle], dtype=np.float32),
+                np.array([goal_distance, goal_angle, self.current_step / self.max_steps], dtype=np.float32),
                 norm_lidar
             ), axis=0)
         
